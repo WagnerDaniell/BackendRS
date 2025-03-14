@@ -1,6 +1,6 @@
 # Sistema de Reservas
 
-Funcionalidades em dessenvolvimento...
+Funcionalidades em desenvolvimento...
 
 1. Autenticação de Usuário
 
