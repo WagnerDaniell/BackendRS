@@ -1,7 +1,7 @@
 ﻿using BackendSR.Application.DTOs.Request;
 using BackendSR.Application.DTOs.Response;
 using BackendSR.Application.Service;
-using BackendSR.Application.UseCase;
+using BackendRS.Application.UseCase.Auth;
 using BackendSR.Domain.Entities;
 using BackendSR.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;

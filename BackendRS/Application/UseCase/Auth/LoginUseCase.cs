@@ -7,7 +7,7 @@ using BackendSR.Application.DTOs.Response;
 using BackendSR.Application.Service;
 using BackendSR.Domain.Exceptions;
 
-namespace BackendSR.Application.UseCase
+namespace BackendRS.Application.UseCase.Auth
 {
     public class LoginUseCase
     {
@@ -19,7 +19,7 @@ namespace BackendSR.Application.UseCase
             _context = context;
             _tokenService = token;
         }
-        public async Task<ActionResult<AuthResponse>> executeLogin (LoginRequest loginRequest)
+        public async Task<ActionResult<AuthResponse>> executeLogin(LoginRequest loginRequest)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == loginRequest.Email.ToLower().Trim());
 

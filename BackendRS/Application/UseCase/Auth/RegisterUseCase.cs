@@ -7,7 +7,7 @@ using BackendSR.Application.DTOs.Response;
 using BackendSR.Domain.Exceptions;
 using BackendSR.Validation;
 
-namespace BackendSR.Application.UseCase
+namespace BackendRS.Application.UseCase.Auth
 {
     public class RegisterUseCase
     {
@@ -24,7 +24,7 @@ namespace BackendSR.Application.UseCase
             var validator = new RegisterValidator();
             var result = validator.Validate(user);
 
-            if(!result.IsValid)
+            if (!result.IsValid)
             {
                 throw new UnauthorizedException("Dados informados não estão em um formato valido!");
             }
@@ -43,7 +43,8 @@ namespace BackendSR.Application.UseCase
                 await _context.Users.AddAsync(user);
                 await _context.SaveChangesAsync();
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception("Erro ao salvar no banco de dados!", ex);
             };
