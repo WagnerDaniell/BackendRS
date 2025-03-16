@@ -1,9 +1,14 @@
 ﻿using BackendRS.Application.DTOs.Response;
+using BackendRS.Application.Service;
 using BackendRS.Domain.Entities;
 using BackendRS.Domain.Exceptions;
 using BackendRS.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
 
 namespace BackendRS.Application.UseCase.ManagerTables
 {
@@ -15,9 +20,17 @@ namespace BackendRS.Application.UseCase.ManagerTables
         {
             _context = context;
         }
-        public async Task<ActionResult<MessageResponse>> executeCreateTable(Table table)
+        public async Task<ActionResult<MessageResponse>> executeCreateTable(Table table, string token)
         {
             //Passar por um validate
+            var validateTokenRole = new ValidateTokenRole();
+            var isAuthorized = validateTokenRole.ValidateRole(token);
+
+            if (!isAuthorized)
+            {
+                throw new UnauthorizedException("Error: Não Autorizado");
+            };
+            
 
             var Existingtable = await _context.Tables.FirstOrDefaultAsync(x => x.Id == table.Id);
 

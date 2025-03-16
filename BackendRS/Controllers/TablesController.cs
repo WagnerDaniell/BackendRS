@@ -9,11 +9,11 @@ namespace BackendRS.Controllers
 {
     [ApiController]
     [Route("api/sr")]
-    public class ManagerTableController : ControllerBase
+    public class TablesController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public ManagerTableController(DataContext context)
+        public TablesController(DataContext context)
         {
             _context = context;
         }
@@ -29,21 +29,21 @@ namespace BackendRS.Controllers
 
         [HttpPost]
         [Route("createTable")]
-        public async Task<ActionResult> CreateTable([FromBody] Table table)
+        public async Task<ActionResult> CreateTable([FromBody] Table table, string token)
         {
             var useCase = new CreateTableUseCase(_context);
 
-            var reponseCreateTable = await useCase.executeCreateTable(table);
+            var reponseCreateTable = await useCase.executeCreateTable(table, token);
 
             return Created(string.Empty, reponseCreateTable.Value);
         }
 
         [HttpDelete]
         [Route("deleteTable/{id}")]
-        public async Task<ActionResult> DeleteTable(Guid id)
+        public async Task<ActionResult> DeleteTable(Guid id, string token)
         {
             var useCase = new DeleteTableUseCase(_context);
-            var reponseDeleteTable = await useCase.executeDeleteTable(id);
+            var reponseDeleteTable = await useCase.executeDeleteTable(id, token);
             return Ok(reponseDeleteTable.Value);
         }
 
