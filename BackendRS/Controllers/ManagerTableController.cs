@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using BackendRS.Application.UseCase.ManagerTables;
-using BackendSR.Domain.Entities;
-using BackendSR.Infrastructure.Data;
+using BackendRS.Domain.Entities;
+using BackendRS.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -47,7 +47,13 @@ namespace BackendRS.Controllers
             return Ok(reponseDeleteTable.Value);
         }
 
-
-
-    }
+        [HttpPatch]
+        [Route("updateTable/{id}")]
+        public async Task<ActionResult> UpdateTable(Guid id, [FromBody] Table table)
+        {
+            var useCase = new UpdateTablesUseCase(_context);
+            var reponseUpdateTable = await useCase.executeUpdate(id, table.Name, table.Status, table.Capacity);
+            return Ok(reponseUpdateTable.Value);
+        }
+    }   
 }

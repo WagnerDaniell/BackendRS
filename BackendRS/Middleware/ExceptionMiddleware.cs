@@ -1,6 +1,6 @@
-﻿using BackendSR.Domain.Exceptions;
+﻿using BackendRS.Domain.Exceptions;
 
-namespace BackendSR.Middleware
+namespace BackendRS.Middleware
 {
     public class ExceptionMiddleware
     {

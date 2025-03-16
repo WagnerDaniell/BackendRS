@@ -1,9 +1,9 @@
-﻿using BackendSR.Application.DTOs.Request;
-using BackendSR.Application.DTOs.Response;
-using BackendSR.Application.Service;
+﻿using BackendRS.Application.DTOs.Request;
+using BackendRS.Application.DTOs.Response;
+using BackendRS.Application.Service;
 using BackendRS.Application.UseCase.Auth;
-using BackendSR.Domain.Entities;
-using BackendSR.Infrastructure.Data;
+using BackendRS.Domain.Entities;
+using BackendRS.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendSR.Controllers

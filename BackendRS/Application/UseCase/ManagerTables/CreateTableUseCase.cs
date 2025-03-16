@@ -1,7 +1,7 @@
 ﻿using BackendRS.Application.DTOs.Response;
-using BackendSR.Domain.Entities;
-using BackendSR.Domain.Exceptions;
-using BackendSR.Infrastructure.Data;
+using BackendRS.Domain.Entities;
+using BackendRS.Domain.Exceptions;
+using BackendRS.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

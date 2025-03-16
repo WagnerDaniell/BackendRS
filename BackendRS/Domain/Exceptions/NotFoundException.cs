@@ -1,4 +1,4 @@
-﻿namespace BackendSR.Domain.Exceptions
+﻿namespace BackendRS.Domain.Exceptions
 {
     public class NotFoundException : Exception
     {

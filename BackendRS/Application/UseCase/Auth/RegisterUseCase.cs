@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BackendSR.Domain.Entities;
-using BackendSR.Infrastructure.Data;
+using BackendRS.Domain.Entities;
+using BackendRS.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using BackendSR.Application.Service;
-using BackendSR.Application.DTOs.Response;
-using BackendSR.Domain.Exceptions;
-using BackendSR.Validation;
+using BackendRS.Application.Service;
+using BackendRS.Application.DTOs.Response;
+using BackendRS.Domain.Exceptions;
+using BackendRS.Validation;
 
 namespace BackendRS.Application.UseCase.Auth
 {

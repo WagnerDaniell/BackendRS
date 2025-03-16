@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using BackendSR.Domain.Entities;
+using BackendRS.Domain.Entities;
 
-namespace BackendSR.Validation
+namespace BackendRS.Validation
 {
     public class RegisterValidator : AbstractValidator<User>
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BackendSR.Domain.Entities
+namespace BackendRS.Domain.Entities
 {
     public class Table
     {

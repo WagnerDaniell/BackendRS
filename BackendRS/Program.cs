@@ -1,5 +1,5 @@
-using BackendSR.Application.Service;
-using BackendSR.Infrastructure.Data;
+using BackendRS.Application.Service;
+using BackendRS.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

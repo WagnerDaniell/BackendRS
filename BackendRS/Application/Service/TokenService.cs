@@ -2,9 +2,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using BackendSR.Domain.Entities;
+using BackendRS.Domain.Entities;
 
-namespace BackendSR.Application.Service
+namespace BackendRS.Application.Service
 {
     public class TokenService
     {

@@ -1,4 +1,4 @@
-﻿namespace BackendSR.Application.DTOs.Response
+﻿namespace BackendRS.Application.DTOs.Response
 {
     public class AuthResponse
     {

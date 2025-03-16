@@ -1,4 +1,4 @@
-﻿namespace BackendSR.Application.DTOs.Request
+﻿namespace BackendRS.Application.DTOs.Request
 {
     public class LoginRequest
     {

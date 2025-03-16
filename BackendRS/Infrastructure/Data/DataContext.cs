@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using BackendSR.Domain.Entities;
+using BackendRS.Domain.Entities;
 
-namespace BackendSR.Infrastructure.Data
+namespace BackendRS.Infrastructure.Data
 {
     public class DataContext : DbContext
     {

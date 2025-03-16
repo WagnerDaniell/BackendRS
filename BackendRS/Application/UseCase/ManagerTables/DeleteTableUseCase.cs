@@ -1,6 +1,6 @@
 ﻿using BackendRS.Application.DTOs.Response;
-using BackendSR.Domain.Exceptions;
-using BackendSR.Infrastructure.Data;
+using BackendRS.Domain.Exceptions;
+using BackendRS.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendRS.Application.UseCase.ManagerTables
