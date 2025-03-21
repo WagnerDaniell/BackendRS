@@ -16,5 +16,6 @@ namespace BackendRS.Domain.Entities
         [Required, Column(TypeName = "VARCHAR(100)")]
         public string Role { get; set; } = string.Empty;
 
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

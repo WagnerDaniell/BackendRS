@@ -9,11 +9,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace BackendSR.Migrations
+namespace BackendRS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250314134801_AddTables")]
-    partial class AddTables
+    [Migration("20250321171330_FixForeignKeys")]
+    partial class FixForeignKeys
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,10 +25,16 @@ namespace BackendSR.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BackendSR.Domain.Entities.Reservation", b =>
+            modelBuilder.Entity("BackendRS.Domain.Entities.Reservation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("TableId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("dateReservation")
@@ -39,20 +45,16 @@ namespace BackendSR.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(100)");
 
-                    b.Property<string>("tableId")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(100)");
-
-                    b.Property<string>("userId")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(100)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("TableId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reservations");
                 });
 
-            modelBuilder.Entity("BackendSR.Domain.Entities.Table", b =>
+            modelBuilder.Entity("BackendRS.Domain.Entities.Table", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +77,7 @@ namespace BackendSR.Migrations
                     b.ToTable("Tables");
                 });
 
-            modelBuilder.Entity("BackendSR.Domain.Entities.User", b =>
+            modelBuilder.Entity("BackendRS.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -100,6 +102,35 @@ namespace BackendSR.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BackendRS.Domain.Entities.Reservation", b =>
+                {
+                    b.HasOne("BackendRS.Domain.Entities.Table", "Table")
+                        .WithMany("Reservations")
+                        .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackendRS.Domain.Entities.User", "User")
+                        .WithMany("Reservations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Table");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BackendRS.Domain.Entities.Table", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("BackendRS.Domain.Entities.User", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

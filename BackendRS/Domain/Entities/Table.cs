@@ -13,5 +13,7 @@ namespace BackendRS.Domain.Entities
         public string Capacity { get; set; } = string.Empty;
         [Required, Column(TypeName = "VARCHAR(100)")]
         public string Status { get; set; } = string.Empty;
+
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

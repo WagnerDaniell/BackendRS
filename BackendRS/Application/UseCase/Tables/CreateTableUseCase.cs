@@ -3,6 +3,7 @@ using BackendRS.Application.Service;
 using BackendRS.Domain.Entities;
 using BackendRS.Domain.Exceptions;
 using BackendRS.Infrastructure.Data;
+using BackendRS.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
@@ -22,7 +23,9 @@ namespace BackendRS.Application.UseCase.ManagerTables
         }
         public async Task<ActionResult<MessageResponse>> executeCreateTable(Table table, string token)
         {
-            //Passar por um validate
+            var validator = new TableValidator();
+            var resultValidator = validator.Validate(table);
+
             var validateTokenRole = new ValidateTokenRole();
             var isAuthorized = validateTokenRole.ValidateRole(token);
 

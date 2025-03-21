@@ -8,11 +8,17 @@ namespace BackendRS.Domain.Entities
         [Key]
         public Guid Id { get; set; }
 
-        [Required, Column(TypeName = "VARCHAR(100)")]
-        public string userId { get; set; } = string.Empty;
+        [Required]
+        public Guid UserId { get; set; }
 
-        [Required, Column(TypeName = "VARCHAR(100)")]
-        public string tableId { get; set; } = string.Empty;
+        [ForeignKey("UserId")]
+        public User User { get; set; } = null!;
+
+        [Required]
+        public Guid TableId { get; set; }
+
+        [ForeignKey("TableId")]
+        public Table Table { get; set; } = null!;
 
         [Required, Column(TypeName = "VARCHAR(100)")]
         public string dateReservation { get; set; } = string.Empty;
